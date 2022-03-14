@@ -10,11 +10,13 @@ runs:
   using: "composite"
   steps:
     - run: |
-        echo "::group::This is the Action-2 run:"
         echo ${{ inputs.same-input }}
-        echo "::endgroup::"
       shell: bash
+      
     - run: |
-        echo "sameinput= ${{ inputs.same-input }}" >> $GITHUB_ENV
-        echo ${{ env.sameinput }}
+        echo "sameinput=${{ inputs.same-input }}" >> $GITHUB_ENV
+      shell: bash
+      
+    - run: |
+        echo ${{ env.same-input }}
       shell: bash
