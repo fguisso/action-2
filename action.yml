@@ -1,0 +1,20 @@
+name: "Action 2"
+description: "Just an action that prints an input"
+
+inputs:
+  same-input:
+    description: "This is a normal input"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo "::group::This is the Action-2 run:"
+        echo ${{ inputs.same-input }}
+        echo "::endgroup::"
+      shell: bash
+    - run: |
+        echo "sameinput= ${{ inputs.same-input }}" >> $GITHUB_ENV
+        echo ${{ env.sameinput }}
+      shell: bash
